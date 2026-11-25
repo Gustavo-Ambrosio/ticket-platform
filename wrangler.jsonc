@@ -1,0 +1,16 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "green-culture-ingressos",
+  "main": "src/worker.js",
+  "compatibility_date": "2026-11-25",
+  "workers_dev": true,
+  "assets": { "directory": "./public", "binding": "ASSETS", "run_worker_first": ["/api/*"] },
+  "vars": {
+    "APP_URL": "http://localhost:8787",
+    "SALES_ENABLED": "false",
+    "MP_ENV": "test"
+  },
+  // Substituir pelo ID retornado por: npx wrangler d1 create green-culture-ingressos
+  "d1_databases": [{ "binding": "DB", "database_name": "green-culture-ingressos", "database_id": "00000000-0000-0000-0000-000000000000", "migrations_dir": "migrations" }]
+  // Sem rotas para o dom�nio principal. Adicionar apenas o subdom�nio ap�s homologar.
+}

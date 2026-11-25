@@ -1,0 +1,4 @@
+MP_ACCESS_TOKEN=TEST-substituir
+MP_WEBHOOK_SECRET=substituir
+ADMIN_PASSWORD=gerar-uma-senha-longa-e-exclusiva
+SESSION_SECRET=gerar-um-segredo-aleatorio-de-pelo-menos-32-caracteres

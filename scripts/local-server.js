@@ -15,12 +15,12 @@ const env={...settings,DB:database('.local/data.sqlite'),APP_URL:`http://127.0.0
 env.LOCAL_QR=async(content)=>{const {stdout}=await exec('python',['-c',"import qrcode,qrcode.image.svg,sys; qrcode.make(sys.argv[1],image_factory=qrcode.image.svg.SvgPathImage).save(sys.stdout.buffer)",content],{maxBuffer:1024*1024});return stdout;};
 env.ASSETS={async fetch(request){
  const url=new URL(request.url);let path;
- try{path=resolve(root,'.'+decodeURIComponent(url.pathname==='/'?'/index.html':url.pathname));}catch{return new Response('N�o encontrado',{status:404});}
- if(!path.startsWith(root+sep))return new Response('N�o encontrado',{status:404});
+ try{path=resolve(root,'.'+decodeURIComponent(url.pathname==='/'?'/index.html':url.pathname));}catch{return new Response('Não encontrado',{status:404});}
+ if(!path.startsWith(root+sep))return new Response('Não encontrado',{status:404});
  try{
   const mime={'.html':'text/html; charset=utf-8','.css':'text/css; charset=utf-8','.js':'text/javascript; charset=utf-8','.svg':'image/svg+xml'}[extname(path)]||'application/octet-stream';
   return new Response(readFileSync(path),{headers:{'Content-Type':mime,'Cache-Control':'no-store','X-Content-Type-Options':'nosniff','Referrer-Policy':'no-referrer','X-Frame-Options':'DENY'}});
- }catch{return new Response('N�o encontrado',{status:404});}
+ }catch{return new Response('Não encontrado',{status:404});}
 }};
 createServer(async(req,res)=>{
  try{
@@ -28,4 +28,4 @@ createServer(async(req,res)=>{
   const request=new Request(`http://127.0.0.1:${port}${req.url}`,{method:req.method,headers:req.headers,...(!['GET','HEAD'].includes(req.method)?{body:Buffer.concat(chunks)}:{})});
   const response=await worker.fetch(request,env);res.writeHead(response.status,Object.fromEntries(response.headers));res.end(Buffer.from(await response.arrayBuffer()));
  }catch(err){res.writeHead(500);res.end('Erro local.');console.error(err.message);}
-}).listen(port,'127.0.0.1',()=>console.log(`Green Culture: http://127.0.0.1:${port}\nPainel: http://127.0.0.1:${port}/admin.html\nSenha local em .local/settings.json (n�o enviar ao GitHub).\nVendas desativadas; banco local separado.`));
+}).listen(port,'127.0.0.1',()=>console.log(`Green Culture: http://127.0.0.1:${port}\nPainel: http://127.0.0.1:${port}/admin.html\nSenha local em .local/settings.json (não enviar ao GitHub).\nVendas desativadas; banco local separado.`));

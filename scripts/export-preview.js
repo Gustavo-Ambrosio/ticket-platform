@@ -1,5 +1,5 @@
 import {readFileSync,writeFileSync,mkdirSync} from 'node:fs';
-const demo={sales_enabled:false,events:[{id:'encontro-na-floresta',title:'Encontro na Floresta',subtitle:'Uma nova frequ�ncia. A mesma conex�o.',starts_at:'2027-02-13T18:00:00-03:00',city:'Francisco Beltr�o - PR',venue:'Local demonstrativo � a definir',description:'Um encontro entre m�sica, natureza e pessoas. Uma jornada de psytrance para dan�ar, se conectar e viver a pista com o Coletivo Green Culture. Informa��es e valores ilustrativos para apresenta��o da plataforma.',demo:1,lots:[{id:'raiz',name:'Raiz',price_cents:6000,remaining:50,active:true},{id:'crescer',name:'Crescer',price_cents:8000,remaining:100,active:false},{id:'florescer',name:'Florescer',price_cents:10000,remaining:100,active:false}]}]};
+const demo={sales_enabled:false,events:[{id:'encontro-na-floresta',title:'Encontro na Floresta',subtitle:'Uma nova frequência. A mesma conexão.',starts_at:'2027-02-13T18:00:00-03:00',city:'Francisco Beltrão – PR',venue:'Local demonstrativo · a definir',description:'Um encontro entre música, natureza e pessoas. Uma jornada de psytrance para dançar, se conectar e viver a pista com o Coletivo Green Culture. Informações e valores ilustrativos para apresentação da plataforma.',demo:1,lots:[{id:'raiz',name:'Raiz',price_cents:6000,remaining:50,active:true},{id:'crescer',name:'Crescer',price_cents:8000,remaining:100,active:false},{id:'florescer',name:'Florescer',price_cents:10000,remaining:100,active:false}]}]};
 let html=readFileSync('public/index.html','utf8');
 html=html.replace('<link rel="stylesheet" href="/style.css">',()=>'<style>'+readFileSync('public/style.css','utf8')+'</style>');
 const js=readFileSync('public/app.js','utf8').replace("fetch('/api/events')",()=>`Promise.resolve({ok:true,json:async()=>(${JSON.stringify(demo)})})`);
@@ -9,4 +9,4 @@ const icon='data:image/svg+xml;base64,'+Buffer.from(readFileSync('public/favicon
 html=html.replaceAll('/favicon.svg',icon).replaceAll('href="/"','href="#"');
 html=html.replaceAll('href="/privacidade.html"','href="https://www.instagram.com/greenculture.prod/"');
 mkdirSync('dist',{recursive:true});writeFileSync('dist/Green_Culture_Previa.html',html);
-console.log('Pr�via independente: dist/Green_Culture_Previa.html (pagamentos desativados)');
+console.log('Prévia independente: dist/Green_Culture_Previa.html (pagamentos desativados)');

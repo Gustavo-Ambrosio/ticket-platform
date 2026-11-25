@@ -28,5 +28,5 @@ BEGIN
  SELECT CASE WHEN NEW.quantity + COALESCE((SELECT SUM(quantity) FROM orders WHERE lot_id=NEW.lot_id AND status IN ('pending','paid')),0)
  > (SELECT capacity FROM lots WHERE id=NEW.lot_id) THEN RAISE(ABORT, 'SOLD_OUT') END;
 END;
-INSERT INTO events VALUES ('encontro-na-floresta','Encontro na Floresta','Uma nova frequ�ncia. A mesma conex�o.','2027-02-13T18:00:00-03:00','Francisco Beltr�o - PR','Local demonstrativo � a definir','Um encontro entre m�sica, natureza e pessoas. Uma jornada de psytrance para dan�ar, se conectar e viver a pista com o Coletivo Green Culture. Informa��es e valores ilustrativos para apresenta��o da plataforma.',NULL,1,1);
+INSERT INTO events VALUES ('encontro-na-floresta','Encontro na Floresta','Uma nova frequência. A mesma conexão.','2027-02-13T18:00:00-03:00','Francisco Beltrão – PR','Local demonstrativo · a definir','Um encontro entre música, natureza e pessoas. Uma jornada de psytrance para dançar, se conectar e viver a pista com o Coletivo Green Culture. Informações e valores ilustrativos para apresentação da plataforma.',NULL,1,1);
 INSERT INTO lots VALUES ('raiz','encontro-na-floresta','Raiz',6000,50,1,1),('crescer','encontro-na-floresta','Crescer',8000,100,2,1),('florescer','encontro-na-floresta','Florescer',10000,100,3,1);

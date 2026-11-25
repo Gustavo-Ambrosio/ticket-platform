@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import worker,{hmac} from '../src/worker.js';
 import {database} from '../scripts/database.js';
-test('fluxo completo: reserva, webhook, ingresso privado, check-in �nico e reembolso',async()=>{
+test('fluxo completo: reserva, webhook, ingresso privado, check-in único e reembolso',async()=>{
  const db=database();const env={DB:db,SALES_ENABLED:'true',MP_ACCESS_TOKEN:'test',MP_WEBHOOK_SECRET:'webhook-secret',MP_ENV:'test',ADMIN_PASSWORD:'admin-password',SESSION_SECRET:'session-secret',APP_URL:'https://test.example',LOCAL_QR:async()=>'<svg></svg>'};
  db.sqlite.exec("UPDATE events SET demo=0; UPDATE lots SET capacity=2 WHERE id='raiz';");
  const originalFetch=globalThis.fetch;let payment;

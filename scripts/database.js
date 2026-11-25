@@ -1,7 +1,7 @@
 import {DatabaseSync} from 'node:sqlite';
 import {readFileSync,readdirSync} from 'node:fs';
 import {resolve} from 'node:path';
-// Adaptador exclusivo de desenvolvimento/testes. Produ��o usa o binding D1 nativo.
+// Adaptador exclusivo de desenvolvimento/testes. Produção usa o binding D1 nativo.
 export function database(path=':memory:'){
  const sqlite=new DatabaseSync(path);sqlite.exec('PRAGMA foreign_keys=ON;');
  sqlite.exec('CREATE TABLE IF NOT EXISTS _local_migrations(name TEXT PRIMARY KEY)');

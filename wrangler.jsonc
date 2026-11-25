@@ -10,7 +10,5 @@
     "SALES_ENABLED": "false",
     "MP_ENV": "test"
   },
-  // Substituir pelo ID retornado por: npx wrangler d1 create green-culture-ingressos
-  "d1_databases": [{ "binding": "DB", "database_name": "green-culture-ingressos", "database_id": "00000000-0000-0000-0000-000000000000", "migrations_dir": "migrations" }]
-  // Sem rotas para o dom�nio principal. Adicionar apenas o subdom�nio ap�s homologar.
+  "d1_databases": [{ "binding": "DB", "database_name": "green-culture-ingressos", "database_id": "5d040ea5-39c4-4334-8077-f92cba8d0e21", "migrations_dir": "migrations" }]
 }
